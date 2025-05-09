@@ -58,7 +58,7 @@ jobs:
           # be deployed to ECS.
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
   Continuous-Deployment:
     needs: build-and-push-ecr-image
@@ -93,7 +93,7 @@ jobs:
          -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
          -e 'AWS_REGION=${{ secrets.AWS_REGION }}' \
          -e 'MONGO_DB_URL=${{ secrets.MONGO_DB_URL }}' \
-         -e 'CHECK_INTERVAL=${{ secrets.CHECK_INTERVAL || 7200 }}' \
+         -e '-e CHECK_INTERVAL=${{ secrets.CHECK_INTERVAL }}' \
          ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
          
       - name: Clean previous images and containers

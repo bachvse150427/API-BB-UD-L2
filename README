@@ -41,7 +41,6 @@ sudo usermod -aG docker ubuntu
 newgrp docker
 
 
-At Git Actions Runner Setup: linux-x64 : https://github.com/bachvse150427/API_CAP/settings/actions/runners/new?arch=x64&os=linux
 
 Download:
 
@@ -55,7 +54,7 @@ tar xzf ./actions-runner-linux-x64-2.323.0.tar.gz
 
 Configure:
 
-./config.sh --url https://github.com/bachvse150427/API_CAP --token A5FCT2CMMZAECMZZYVFCKMDH5MDYI
+./config.sh --url https://github.com/bachvse150427/API-BB-UD-L2 --token A5FCT2DAQXKF6OW77ONMD5TIDW4KY
 
 self-hosted     //  Continuous-Deployment: //needs: build-and-push-ecr-image //runs-on: self-hosted
 
